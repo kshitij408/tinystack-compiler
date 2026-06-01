@@ -1,0 +1,118 @@
+{
+  "valid": [
+    {
+      "name": "arithmetic",
+      "source": "valid/arithmetic.tiny",
+      "expected_stdout": "valid/arithmetic.expected.out",
+      "covers": ["arithmetic", "print"]
+    },
+    {
+      "name": "variables",
+      "source": "valid/variables.tiny",
+      "expected_stdout": "valid/variables.expected.out",
+      "covers": ["variables", "store", "arithmetic", "print"]
+    },
+    {
+      "name": "if_else",
+      "source": "valid/if_else.tiny",
+      "expected_stdout": "valid/if_else.expected.out",
+      "covers": ["if-else", "variables", "store", "print"]
+    },
+    {
+      "name": "comparisons",
+      "source": "valid/comparisons.tiny",
+      "expected_stdout": "valid/comparisons.expected.out",
+      "covers": ["if-else", "comparison-operators", "print"]
+    },
+    {
+      "name": "print",
+      "source": "valid/print.tiny",
+      "expected_stdout": "valid/print.expected.out",
+      "covers": ["print", "variables", "arithmetic"]
+    },
+    {
+      "name": "combined_program",
+      "source": "valid/combined_program.tiny",
+      "expected_stdout": "valid/combined_program.expected.out",
+      "covers": ["variables", "arithmetic", "if-else", "store", "print"]
+    },
+    {
+      "name": "if_value_merge",
+      "source": "valid/if_value_merge.tiny",
+      "expected_stdout": "valid/if_value_merge.expected.out",
+      "covers": ["if-else", "stack-values", "print"]
+    }
+  ],
+  "invalid": [
+    {
+      "name": "duplicate_variable",
+      "source": "invalid/duplicate_variable.tiny",
+      "expected_error": "invalid/duplicate_variable.expected.err",
+      "stage": "semantic",
+      "covers": ["semantic-errors", "variables"]
+    },
+    {
+      "name": "undefined_push",
+      "source": "invalid/undefined_push.tiny",
+      "expected_error": "invalid/undefined_push.expected.err",
+      "stage": "semantic",
+      "covers": ["semantic-errors", "undefined-variables"]
+    },
+    {
+      "name": "undefined_store",
+      "source": "invalid/undefined_store.tiny",
+      "expected_error": "invalid/undefined_store.expected.err",
+      "stage": "semantic",
+      "covers": ["semantic-errors", "undefined-variables"]
+    },
+    {
+      "name": "stack_underflow_add",
+      "source": "invalid/stack_underflow_add.tiny",
+      "expected_error": "invalid/stack_underflow_add.expected.err",
+      "stage": "semantic",
+      "covers": ["semantic-errors", "stack-underflow", "arithmetic"]
+    },
+    {
+      "name": "stack_underflow_store",
+      "source": "invalid/stack_underflow_store.tiny",
+      "expected_error": "invalid/stack_underflow_store.expected.err",
+      "stage": "semantic",
+      "covers": ["semantic-errors", "stack-underflow", "variables"]
+    },
+    {
+      "name": "stack_underflow_print",
+      "source": "invalid/stack_underflow_print.tiny",
+      "expected_error": "invalid/stack_underflow_print.expected.err",
+      "stage": "semantic",
+      "covers": ["semantic-errors", "stack-underflow", "print"]
+    },
+    {
+      "name": "stack_underflow_if",
+      "source": "invalid/stack_underflow_if.tiny",
+      "expected_error": "invalid/stack_underflow_if.expected.err",
+      "stage": "semantic",
+      "covers": ["semantic-errors", "stack-underflow", "if-else"]
+    },
+    {
+      "name": "branch_stack_mismatch",
+      "source": "invalid/branch_stack_mismatch.tiny",
+      "expected_error": "invalid/branch_stack_mismatch.expected.err",
+      "stage": "semantic",
+      "covers": ["semantic-errors", "if-else", "stack-depth"]
+    },
+    {
+      "name": "final_stack_not_empty",
+      "source": "invalid/final_stack_not_empty.tiny",
+      "expected_error": "invalid/final_stack_not_empty.expected.err",
+      "stage": "semantic",
+      "covers": ["semantic-errors", "stack-depth"]
+    },
+    {
+      "name": "branch_local_variable_leak",
+      "source": "invalid/branch_local_variable_leak.tiny",
+      "expected_error": "invalid/branch_local_variable_leak.expected.err",
+      "stage": "semantic",
+      "covers": ["semantic-errors", "if-else", "variables"]
+    }
+  ]
+}
